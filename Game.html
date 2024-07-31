@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <Link rel="stylesheet" href="main_css.css"> <!--This is just getting a reference to the .CSS file. The .CSS file basically sets what the website will look like, depending on what it contains-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .button-container {
+            text-align: center; /*This is setting the location of the actual button*/
+            margin-top: 20px; 
+        }
+        .game-button {
+            width: 150px;
+            height: 50px; 
+            margin: 10px;
+            font-size: large;
+        }
+        .low-button {
+            color: green; /*This is setting the color of the low button*/
+        }
+        .high-button {
+            color: orange; /*This is setting the color of the high button*/
+        }
+    </style>
+    <title>Craps Game</title> 
+    <script src="Code.js"></script> <!--This is getting a reference to the Javascript code that contains all of the functions to make them work on the webpage.-->
+</head>
+<body>
+    <header>
+        <h1 id="heading">Guess if the dice roll will be Low or High!</h1>
+        <div class="button-container">
+            <button onclick="guessLow();" class="game-button low-button">Low</button> <!--This is saying that when the Guess Low button is clicked, it will call upon the "guesslow" funtion.-->
+            <button onclick="guessHigh();" class="game-button high-button">High</button> <!--The same concept as above, but with the huess high button.-->
+        </div>
+        <p id="diceResult"></p>
+        <p id="feedback"></p>
+        <p id="score">Wins: 0 | Losses: 0</p>
+    </header>
+</body>
+</html>

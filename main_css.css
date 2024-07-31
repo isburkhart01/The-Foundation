@@ -1,0 +1,34 @@
+body {
+    background-color: violet;
+    font-size: 2.1em;
+    color: black;
+}
+h1 {
+    color:rebeccapurple;
+    text-align: center;
+}
+#intro {
+    font-size: 1.00em;
+    color:red;
+}
+.colorful {
+    color:blue;
+}
+p {
+    text-align: center;
+    color:rebeccapurple;
+}
+nav {
+    height: 6000px;
+    width: 200px;
+    float: left;
+    padding: 5px;
+    line-height: 30px;
+}
+footer {
+    text-align: center;
+    margin-right: 200px;
+}
+#memeimage {
+    margin-right: 200px;    
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <Link rel="stylesheet" href="main_css.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            /* Adding the GIF as a background image */
+            background-image: url('FIRE.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white; /* Ensuring text is visible on the background */
+        }
+        input {
+            margin: 10px;
+            padding: 5px;
+        }
+        #message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter Your Information</h1>
+    <p>First Name: <input type="text" id="firstName" placeholder="First Name"></p>
+    <p>Last Name: <input type="text" id="lastName" placeholder="Last Name"></p>
+    <p>Zip Code: <input type="text" id="zipCode" placeholder="Zip Code"></p>
+    <button onclick="validateForm()">Submit</button>
+    <p id="message"></p>
+    <p id="secretMessage" style="display:none;">This is the secret message! Congratulations!</p>
+
+    <script>
+        function validateForm() {
+            // Get values from input fields
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const zipCode = document.getElementById('zipCode').value.trim();
+            const fullName = `${firstName} ${lastName}`;
+
+            // Clear any previous messages
+            document.getElementById('message').innerText = '';
+
+            // Check if the full name length is greater than 20 characters
+            if (fullName.length > 20) {
+                document.getElementById('message').innerText = 'Full name must be 20 characters or less.';
+                return;
+            }
+
+            // Check if the zip code is exactly 5 digits
+            if (!/^\d{5}$/.test(zipCode)) {
+                document.getElementById('message').innerText = 'Zip code must be exactly 5 digits.';
+                return;
+            }
+
+            // If both checks pass, show the secret message
+            document.getElementById('secretMessage').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <Link rel="stylesheet" href="main_css.css">
+    <link rel="stylesheet" href="main_css.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Information Validation</title>
@@ -24,6 +24,18 @@
         #message {
             color: red;
         }
+        #toggleSoundButton {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #toggleSoundButton:hover {
+            background-color: darkred;
+        }
     </style>
 </head>
 <body>
@@ -35,7 +47,35 @@
     <p id="message"></p>
     <p id="secretMessage" style="display:none;">This is the secret message! Congratulations!</p>
 
+    <!-- Button to toggle sound on/off -->
+    <button id="toggleSoundButton" onclick="toggleSound()">Play Sound</button>
+
+    <!-- Hidden audio element -->
+    <audio id="backgroundAudio" loop>
+        <source src="crackling-fire-229156.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <script>
+        var isPlaying = false;
+
+        function toggleSound() {
+            var audio = document.getElementById("backgroundAudio");
+            var button = document.getElementById("toggleSoundButton");
+
+            if (isPlaying) {
+                audio.pause();
+                button.innerText = "Play Sound";
+            } else {
+                audio.play().catch(function(error) {
+                    console.log("Failed to play audio: " + error);
+                });
+                button.innerText = "Pause Sound";
+            }
+
+            isPlaying = !isPlaying;
+        }
+
         function validateForm() {
             // Get values from input fields
             const firstName = document.getElementById('firstName').value.trim();

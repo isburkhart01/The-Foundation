@@ -1,17 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <Link rel="stylesheet" href="main_css.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>First Assignment</title>
-    </head>
-    <body>
-        <h1>First Assignment</h1>
-        <p>
-            Hello, my name is Isaiah Burkhart, and I'm excited to learn more about programming in this class!
-        </p>
-            <img id="memeimage" src="t7zem3iptyk41.jpg" alt="Example Image" width="500" height="500">
-        </p>
-    </body>
+<head>
+    <link rel="stylesheet" href="main_css.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>First Assignment</title>
+    <style>
+        #memeimage {
+            position: absolute;
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust for image width to center it */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>First Assignment</h1>
+    <p>Hello, my name is Isaiah Burkhart, and I'm excited to learn more about programming in this class!</p>
+    
+    <!-- Meme image -->
+    <img id="memeimage" src="t7zem3iptyk41.jpg" alt="Example Image" width="500" height="500">
+    
+    <!-- Start and Stop buttons -->
+    <button id="startButton" onclick="startMoving()">Start</button>
+    <button id="stopButton" onclick="stopMoving()" disabled>Stop</button>
+
+    <script>
+        let movementInterval;
+
+        function startMoving() {
+            // Disable Start button and enable Stop button
+            document.getElementById('startButton').disabled = true;
+            document.getElementById('stopButton').disabled = false;
+
+            // Function to move the image
+            movementInterval = setInterval(moveImage, 1000);
+        }
+
+        function stopMoving() {
+            // Enable Start button and disable Stop button
+            document.getElementById('startButton').disabled = false;
+            document.getElementById('stopButton').disabled = true;
+
+            // Stop moving the image
+            clearInterval(movementInterval);
+        }
+
+        function moveImage() {
+            const image = document.getElementById('memeimage');
+            const x = Math.floor(Math.random() * (window.innerWidth - image.width));
+            const y = Math.floor(Math.random() * (window.innerHeight - image.height));
+
+            image.style.left = x + 'px';
+            image.style.top = y + 'px';
+        }
+
+        // Position the image at the bottom-middle when the page loads
+        window.onload = function() {
+            const image = document.getElementById('memeimage');
+            const x = (window.innerWidth / 2) - (image.width / 2);
+            const y = window.innerHeight - image.height;
+
+            image.style.left = x + 'px';
+            image.style.top = y + 'px';
+        };
+    </script>
+</body>
 </html>
